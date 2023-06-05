@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "525490263593",
+    "project_id": "a-mov-com-idcc",
+    "storage_bucket": "a-mov-com-idcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525490263593:android:1b44141964fda811296e38",
+        "android_client_info": {
+          "package_name": "com.example.movilescomp2023a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525490263593-pfh6hj2dplumkmfqbts67pch4e9jlt34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvY9V8tezgR1lwXE4usyJXPsLAbyKYz9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525490263593-pfh6hj2dplumkmfqbts67pch4e9jlt34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
