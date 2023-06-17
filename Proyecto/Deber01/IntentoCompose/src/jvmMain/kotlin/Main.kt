@@ -24,6 +24,7 @@ val column2Weight = 0.2f
 val column3Weight = 0.2f
 val column4Weight = 0.2f
 val column5Weight = 0.2f
+val column6Weight = 0.2f
 
 data class Pharmacy(
     var dateOfOpening: Date,
@@ -113,8 +114,7 @@ fun main() = application {
                     ) {
                         Text("Save Changes")
                     }
-                }
-                else {
+                } else {
                     Button(
                         onClick = {
                             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -148,10 +148,14 @@ fun main() = application {
                         // Set the values of text fields with the data from the selected row
                         pharmacyNameValue.value = pharmacy.pharmacyName
                         pharmacyIDValue.value = pharmacy.pharmacyID.toString()
-                        dateValue.value = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pharmacy.dateOfOpening)
+                        dateValue.value =
+                            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pharmacy.dateOfOpening)
                         isOpenValue.value = pharmacy.isOpen.toString()
                         stockValue.value = pharmacy.stockValue.toString()
                         selectedPharmacy.value = pharmacy
+                    }, onEliminateClicked = { pharmacy ->
+                        recordOfPharmacies.remove(pharmacy)
+                        writePharmaciesToFile(file, recordOfPharmacies)
                     })
                 }
             }
@@ -185,8 +189,10 @@ fun writePharmaciesToFile(file: File, pharmacies: List<Pharmacy>) {
     try {
         val writer = FileWriter(file)
         pharmacies.forEach { pharmacy ->
-            val dateString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pharmacy.dateOfOpening)
-            val line = "$dateString,${pharmacy.isOpen},${pharmacy.pharmacyName},${pharmacy.pharmacyID},${pharmacy.stockValue}"
+            val dateString =
+                SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pharmacy.dateOfOpening)
+            val line =
+                "$dateString,${pharmacy.isOpen},${pharmacy.pharmacyName},${pharmacy.pharmacyID},${pharmacy.stockValue}"
             writer.write(line)
             writer.write(System.lineSeparator())
         }
@@ -198,7 +204,11 @@ fun writePharmaciesToFile(file: File, pharmacies: List<Pharmacy>) {
 
 
 @Composable
-fun TableScreen(recordOfPharmacies: List<Pharmacy>, onEditClicked: (Pharmacy) -> Unit) {
+fun TableScreen(
+    recordOfPharmacies: List<Pharmacy>,
+    onEditClicked: (Pharmacy) -> Unit,
+    onEliminateClicked: (Pharmacy) -> Unit
+) {
     val tableData = recordOfPharmacies.map { pharmacy ->
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val formattedDate = dateFormat.format(pharmacy.dateOfOpening)
@@ -214,11 +224,16 @@ fun TableScreen(recordOfPharmacies: List<Pharmacy>, onEditClicked: (Pharmacy) ->
                 TableCell(text = "Is Open", weight = column4Weight)
                 TableCell(text = "Stock Value", weight = column5Weight)
                 TableCell(text = "", weight = 0.2f) // Empty cell for the "Edit" button
+                TableCell(text = "", weight = 0.2f) // Empty cell for the "Eliminate" button
             }
         }
 
         items(recordOfPharmacies) { pharmacy ->
-            PharmacyRow(pharmacy = pharmacy, onEditClicked = onEditClicked)
+            PharmacyRow(
+                pharmacy = pharmacy,
+                onEditClicked = onEditClicked,
+                onEliminateClicked = onEliminateClicked
+            )
         }
     }
 }
@@ -245,7 +260,8 @@ fun RowScope.TableCell(
 @Composable
 fun PharmacyRow(
     pharmacy: Pharmacy,
-    onEditClicked: (Pharmacy) -> Unit
+    onEditClicked: (Pharmacy) -> Unit,
+    onEliminateClicked: (Pharmacy) -> Unit
 ) {
     val isSelected = remember { mutableStateOf(false) }
 
@@ -278,6 +294,14 @@ fun PharmacyRow(
             modifier = Modifier.weight(column5Weight)
         ) {
             Text(if (isSelected.value) "Edit" else "Edit")
+        }
+        Button(
+            onClick = {
+                onEliminateClicked(pharmacy)
+            },
+            modifier = Modifier.weight(column5Weight)
+        ) {
+            Text("Eliminate")
         }
     }
 }
