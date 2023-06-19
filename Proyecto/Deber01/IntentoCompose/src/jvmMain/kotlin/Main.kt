@@ -19,6 +19,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.io.*
 import androidx.compose.ui.graphics.Color
+import java.time.LocalDate
+
 enum class Tab {
     Welcome,
     Pharmacy,
@@ -31,13 +33,30 @@ val column4Weight = 0.2f
 val column5Weight = 0.1f
 val column6Weight = 0.1f
 
-data class Pharmacy(
+class Pharmacy(
     var dateOfOpening: Date,
     var isOpen: Boolean,
     var pharmacyName: String,
     var pharmacyID: Int,
     var stockValue: Double,
-    var isModified: Boolean = false
+    var isModified: Boolean = false,
+    var medicines: MutableList<Medicine> = mutableListOf()
+){
+    fun addMedicine(medicine: Medicine) {
+        medicines.add(medicine)
+    }
+
+    fun removeMedicine(medicine: Medicine) {
+        medicines.remove(medicine)
+    }
+}
+class Medicine(
+    var medicineName: String,
+    var price: Double,
+    var quantity: Int,
+    var isExpired: Boolean,
+    var expirationDate: Date,
+    var isModified: Boolean = false,
 )
 
 
@@ -52,10 +71,24 @@ fun main() = application {
     val selectedPharmacy = remember { mutableStateOf<Pharmacy?>(null) }
     val currentTab = remember { mutableStateOf(Tab.Welcome) }
 
+    val medicineNameValue = remember{ mutableStateOf("")}
+    val priceValue= remember{ mutableStateOf("")}
+    val quantityValue = remember{ mutableStateOf("")}
+    val expirationDateValue = remember{ mutableStateOf("")}
+    val isExpired = remember{ mutableStateOf("")}
+    val selectedMedicine = remember { mutableStateOf<Medicine?>(null) }
+    val recordofMedicines = remember { mutableStateListOf<Medicine>() }
+    val isPrintClickedB = remember { mutableStateOf(false) }
     val file = File("RecordPharmacies.txt")
     if (file.exists()) {
         // If the file exists, read the pharmacies from it
         readPharmaciesFromFile(file)?.let { recordOfPharmacies.addAll(it) }
+    }
+
+    val fileB = File("RecordMedicines.txt")
+    if (fileB.exists()) {
+        // If the file exists, read the pharmacies from it
+        readMedicinesFromFile(fileB)?.let { recordofMedicines.addAll(it) }
     }
 
     Window(
@@ -92,8 +125,7 @@ fun main() = application {
                             Text("Bienvenido")
                         }
                     }
-                    Tab.Pharmacy -> {
-                        Column(Modifier.fillMaxSize(), Arrangement.spacedBy(5.dp)) {
+                    Tab.Pharmacy -> { Column(Modifier.fillMaxSize(), Arrangement.spacedBy(5.dp)) {
                             TextField(
                                 value = pharmacyNameValue.value,
                                 onValueChange = { pharmacyNameValue.value = it },
@@ -194,11 +226,101 @@ fun main() = application {
                         }
                     }
                     Tab.Medicine -> {
-                        Box(
-                            Modifier.fillMaxSize().background(Color.White),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text("Medicine")
+                        Column(Modifier.fillMaxSize(), Arrangement.spacedBy(5.dp)) {
+                            TextField(
+                                value = medicineNameValue.value,
+                                onValueChange = { medicineNameValue.value = it },
+                                label = { Text("Value Name") }
+                            )
+
+                            TextField(
+                                value = priceValue.value,
+                                onValueChange = { priceValue.value = it },
+                                label = { Text("Price") }
+                            )
+
+                            TextField(
+                                value = expirationDateValue.value,
+                                onValueChange = { expirationDateValue.value = it },
+                                label = { Text("Expiration Date") }
+                            )
+                            TextField(
+                                value = isExpired.value,
+                                onValueChange = { isExpired.value = it },
+                                label = { Text("Is is expired") }
+                            )
+
+                            TextField(
+                                value = quantityValue.value,
+                                onValueChange = { quantityValue.value = it },
+                                label = { Text("Quantity") }
+                            )
+                            if (selectedMedicine.value != null) {
+                                Button(
+                                    onClick = {
+                                        selectedMedicine.value?.let { medicine ->
+                                            medicine.medicineName = medicineNameValue.value
+                                            medicine.quantity = quantityValue.value.toIntOrNull() ?: 0
+                                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                            medicine.expirationDate = dateFormat.parse(expirationDateValue.value) ?: Date()
+                                            medicine.isExpired = isExpired.value.toBoolean()
+                                            medicine.price = priceValue.value.toDoubleOrNull() ?: 0.0
+                                            medicine.isModified = true
+
+                                            // Update the recordofMedicines list with the modified medicine
+                                            val index = recordofMedicines.indexOf(medicine)
+                                            if (index != -1) {
+                                                recordofMedicines[index] = medicine
+                                            }
+                                            writeMedicinesToFile(fileB, recordofMedicines)
+                                        }
+                                        selectedMedicine.value = null
+                                    },
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                ) {
+                                    Text("Save Changes")
+                                }
+                            }else {
+                                Button(
+                                    onClick = {
+                                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                        val parsedDate = dateFormat.parse(expirationDateValue.value)
+                                        val medicine = Medicine(
+                                            medicineName = medicineNameValue.value,
+                                            price = priceValue.value.toDoubleOrNull() ?: 0.0,
+                                            quantity = quantityValue.value.toIntOrNull() ?: 0,
+                                            expirationDate = parsedDate ?: Date(),
+                                            isExpired = isExpired.value.toBoolean(),
+                                        )
+                                        recordofMedicines.add(medicine)
+                                        writeMedicinesToFile(fileB, recordofMedicines)
+                                        println("Medicine: $medicine")
+                                    },
+                                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                                ) {
+                                    Text("Save Pharmacy")
+                                }
+                            }
+                            Button(
+                                onClick = { isPrintClickedB.value = true },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text("Print")
+                            }
+                            if (isPrintClickedB.value) {
+                                TableScreenB(recordofMedicines, onEditClicked = { medicine ->
+                                    medicineNameValue.value = medicine.medicineName
+                                    quantityValue.value = medicine.quantity.toString()
+                                    expirationDateValue.value =
+                                        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(medicine.expirationDate)
+                                    isExpired.value = medicine.isExpired.toString()
+                                    priceValue.value = medicine.price.toString()
+                                    selectedMedicine.value = medicine
+                                }, onDeleteClicked = { medicine ->
+                                    recordofMedicines.remove(medicine)
+                                    writeMedicinesToFile(fileB, recordofMedicines)
+                                })
+                            }
                         }
                     }
                 }
@@ -229,6 +351,27 @@ fun readPharmaciesFromFile(file: File): List<Pharmacy>? {
     }
     return null
 }
+fun readMedicinesFromFile(file: File): List<Medicine>? {
+    try {
+        val medicines = mutableListOf<Medicine>()
+        BufferedReader(FileReader(file)).use { reader ->
+            var line: String?
+            while (reader.readLine().also { line = it } != null) {
+                val parts = line!!.split(",")
+                val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(parts[0])
+                val isExpired = parts[1].toBoolean()
+                val medicineName = parts[2]
+                val quantity = parts[3].toInt()
+                val price = parts[4].toDouble()
+                medicines.add(Medicine(medicineName, price, quantity, isExpired, date))
+            }
+        }
+        return medicines
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+    return null
+}
 
 fun writePharmaciesToFile(file: File, pharmacies: List<Pharmacy>) {
     try {
@@ -236,6 +379,20 @@ fun writePharmaciesToFile(file: File, pharmacies: List<Pharmacy>) {
         pharmacies.forEach { pharmacy ->
             val dateString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(pharmacy.dateOfOpening)
             val line = "$dateString,${pharmacy.isOpen},${pharmacy.pharmacyName},${pharmacy.pharmacyID},${pharmacy.stockValue}"
+            writer.write(line)
+            writer.write(System.lineSeparator())
+        }
+        writer.close()
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+}
+fun writeMedicinesToFile(file: File, medicines: List<Medicine>) {
+    try {
+        val writer = FileWriter(file)
+        medicines.forEach { medicine ->
+            val dateString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(medicine.expirationDate)
+            val line =  "${medicine.medicineName},${medicine.price},${medicine.quantity},${medicine.isExpired},$dateString"
             writer.write(line)
             writer.write(System.lineSeparator())
         }
@@ -273,6 +430,31 @@ fun TableScreen(recordOfPharmacies: List<Pharmacy>, onEditClicked: (Pharmacy) ->
     }
 }
 
+@Composable
+fun TableScreenB(recordOfMedicine:  List<Medicine>, onEditClicked: (Medicine) -> Unit, onDeleteClicked: (Medicine) -> Unit) {
+    val tableData = recordOfMedicine.map { medicine ->
+        val dateString = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(medicine.expirationDate)
+        "${medicine.medicineName},${medicine.price},${medicine.quantity},${medicine.isExpired},$dateString"
+    }
+
+    LazyColumn(Modifier.fillMaxSize().padding(16.dp)) {
+        item {
+            Row() {
+                TableCell(text = "Medicine Name", weight = column1Weight)
+                TableCell(text = "Expiration Date", weight = column2Weight)
+                TableCell(text = "Quantity", weight = column3Weight)
+                TableCell(text = "Is Expired", weight = column4Weight)
+                TableCell(text = "Price", weight = column5Weight)
+                TableCell(text = "Edit", weight = 0.1f) // Empty cell for the "Edit" button
+                TableCell(text = "Delete", weight = 0.1f) // Empty cell for the "Delete" button
+            }
+        }
+
+        items(recordOfMedicine) { medicine ->
+            MedicineRow(medicine = medicine, onEditClicked = onEditClicked, onDeleteClicked = onDeleteClicked)
+        }
+    }
+}
 @Composable
 fun RowScope.TableCell(
     text: String,
@@ -329,6 +511,49 @@ fun PharmacyRow(
         }
         IconButton(
             onClick = { onDeleteClicked(pharmacy) },
+            modifier = Modifier.weight(column6Weight)
+        ) {
+            Icon(Icons.Filled.Delete, contentDescription = "Delete")
+        }
+    }
+}
+@Composable
+fun MedicineRow(
+    medicine: Medicine,
+    onEditClicked: (Medicine) -> Unit,
+    onDeleteClicked: (Medicine) -> Unit
+) {
+    val isSelectedB = remember { mutableStateOf(false) }
+
+    Row(Modifier.fillMaxWidth()) {
+        Text(
+            text = medicine.medicineName,
+            modifier = Modifier.weight(column1Weight)
+        )
+        Text(
+            text = medicine.price.toString(),
+            modifier = Modifier.weight(column2Weight)
+        )
+        Text(
+            text = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(medicine.expirationDate),
+            modifier = Modifier.weight(column3Weight)
+        )
+        Text(
+            text = medicine.isExpired.toString(),
+            modifier = Modifier.weight(column4Weight)
+        )
+        Text(
+            text = medicine.quantity.toString(),
+            modifier = Modifier.weight(column5Weight)
+        )
+        IconButton(
+            onClick = { onEditClicked(medicine) },
+            modifier = Modifier.weight(column6Weight)
+        ) {
+            Icon(Icons.Filled.Edit, contentDescription = "Edit")
+        }
+        IconButton(
+            onClick = { onDeleteClicked(medicine) },
             modifier = Modifier.weight(column6Weight)
         ) {
             Icon(Icons.Filled.Delete, contentDescription = "Delete")
