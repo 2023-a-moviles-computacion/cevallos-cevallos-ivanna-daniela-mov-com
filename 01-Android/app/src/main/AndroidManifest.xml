@@ -13,19 +13,27 @@
         android:theme="@style/Theme.MovilesComp2023A"
         tools:targetApi="31">
         <activity
-            android:name=".ACicloVia"
+            android:name=".BListView"
             android:exported="false" />
+        <activity
+            android:name=".AAAcicloVida"
+            android:exported="false"
+            android:label="@string/title_activity_aaaciclo_vida"
+            android:theme="@style/Theme.MovilesComp2023A" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MovilesComp2023A">
+            android:theme="@style/Theme.AAACicloVida">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ACicloVia"
+            android:exported="false" />
     </application>
 
 </manifest>
