@@ -1,0 +1,2 @@
+2001-05-05,true,fybeka,1,9945.0,[Medicine@367801c2, Medicine@4544c93]
+2003-01-04,true,Ekonomica,2,368.6,[Medicine@367801c2, Medicine@4234641d]
