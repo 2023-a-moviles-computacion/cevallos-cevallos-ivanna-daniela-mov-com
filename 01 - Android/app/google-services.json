@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "513756676885",
+    "project_id": "a-mov-com-vaes",
+    "storage_bucket": "a-mov-com-vaes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513756676885:android:94aab7ff413a22d51e9f1c",
+        "android_client_info": {
+          "package_name": "com.example.movilescomputacion2023a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513756676885-7h9765nnl3cs53i33su5tu78jk1sd9o6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTMCyThMDeumWAsFElDDTxUYFDuy-4E1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513756676885-7h9765nnl3cs53i33su5tu78jk1sd9o6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
