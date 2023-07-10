@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NameStyle">
+        <item name="android:layout_marginTop">@dimen/layout_margina</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:paddingTop">@dimen/small_padding</item>
+    </style>
+</resources>
