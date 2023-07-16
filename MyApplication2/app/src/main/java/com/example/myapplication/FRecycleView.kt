@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -8,36 +9,36 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityFrecycleViewBinding
 
 class FRecycleView : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityFrecycleViewBinding
+var totalLikes = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        setContentView(R.layout.activity_frecycle_view)
         super.onCreate(savedInstanceState)
-
-        binding = ActivityFrecycleViewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_frecycle_view)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAnchorView(R.id.fab)
-                .setAction("Action", null).show()
-        }
+        inicializarRecyclerView()
+    }
+    fun aumentarTotalLikes(){
+        totalLikes = totalLikes+1
+        val totalLikesTextView = findViewById<TextView>(R.id.tv_total_likes)
+        totalLikesTextView.text = totalLikes.toString()
+    }
+    fun inicializarRecyclerView(){
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_entrenadores)
+        val adapatador = FRecyclerViewAdaptadorNombreDescripcion(
+            this,
+            BBaseDatosMemoria.arregloBEntrenador,
+            recyclerView
+        )
+        recyclerView.adapter = adapatador
+        recyclerView.itemAnimator = androidx.recyclerview.widget
+            .DefaultItemAnimator()
+        recyclerView.layoutManager = androidx.recyclerview.widget
+            .LinearLayoutManager(this)
+        adapatador.notifyDataSetChanged()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_frecycle_view)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
+
 }

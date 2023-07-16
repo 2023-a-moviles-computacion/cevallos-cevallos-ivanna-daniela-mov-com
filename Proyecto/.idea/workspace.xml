@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb7fe688-910f-4fe8-a610-54343a6d5bdd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_blist_view2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/BListView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/BListView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/FRecycleView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/FRecycleView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/FRecyclerViewAdaptadorNombreDescripcion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/FRecyclerViewAdaptadorNombreDescripcion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/java/com/example/myapplication/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_blist_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_blist_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_ecrud_entrenador.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_ecrud_entrenador.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyApplication2/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tarea1/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tarea1/.idea/gradle.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2SZqbpmEP92uV06gbfNpFvNTzvv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ivann/Documents/ASeptimoSemestre/AplicacionWeb/cevallos-cevallos-ivanna-daniela-mov-com/Proyecto"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb7fe688-910f-4fe8-a610-54343a6d5bdd" name="Changes" comment="" />
+      <created>1689364525145</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689364525145</updated>
+    </task>
+    <servers />
+  </component>
+</project>

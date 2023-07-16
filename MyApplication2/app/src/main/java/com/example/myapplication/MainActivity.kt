@@ -1,7 +1,6 @@
 package com.example.myapplication
 
 import android.app.Activity
-import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -75,6 +74,14 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener{
                 abrirArctividadConParametros(CIntentExplicitoParametros::class.java)
             }
+        val botonSqlite = findViewById<Button>(R.id.btn_sqlite)
+        botonSqlite.setOnClickListener {
+            irActividad(ECrudEntrenador::class.java)
+        }
+        val botonRView = findViewById<Button>(R.id.btn_revcycler_view)
+        botonRView.setOnClickListener {
+            irActividad(FRecycleView::class.java)
+        }
     }
     fun abrirArctividadConParametros(
         clase : Class<*>
