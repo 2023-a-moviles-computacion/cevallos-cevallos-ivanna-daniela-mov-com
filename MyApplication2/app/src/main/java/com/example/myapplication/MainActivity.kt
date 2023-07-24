@@ -82,6 +82,12 @@ class MainActivity : AppCompatActivity() {
         botonRView.setOnClickListener {
             irActividad(FRecycleView::class.java)
         }
+
+        val botonGoogleMaps = findViewById<Button>(R.id.btn_google_maps)
+        botonGoogleMaps
+            .setOnClickListener {
+                irActividad(GGoogleMapsActivity::class.java)
+            }
     }
     fun abrirArctividadConParametros(
         clase : Class<*>
