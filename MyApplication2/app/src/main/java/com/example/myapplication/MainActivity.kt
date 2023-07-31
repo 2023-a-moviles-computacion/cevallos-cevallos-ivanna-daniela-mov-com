@@ -88,6 +88,11 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener {
                 irActividad(GGoogleMapsActivity::class.java)
             }
+        val botonFirebaseUI = findViewById<Button>(R.id.btn_intent_firebase_ui)
+        botonFirebaseUI
+            .setOnClickListener {
+                irActividad(HFirebaseUIAuth::class.java)
+            }
     }
     fun abrirArctividadConParametros(
         clase : Class<*>
