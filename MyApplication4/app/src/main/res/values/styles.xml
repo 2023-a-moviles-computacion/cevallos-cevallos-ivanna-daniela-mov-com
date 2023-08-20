@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextAppearanceActive">@style/BottomNavigationTextStyle</item>
+        <item name="itemIconSize">12dp</item> <!-- Change icon size to your desired value -->
+    </style>
+
+    <style name="BottomNavigationTextStyle" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textSize">10dp</item> <!-- Change text size to your desired value -->
+    </style>
+
+</resources>

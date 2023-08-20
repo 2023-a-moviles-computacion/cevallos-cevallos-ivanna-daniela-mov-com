@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.myapplication.MainActivity">
+
+    <item
+        android:title="HOME"
+        android:icon="@drawable/baseline_home_24"
+        app:showAsAction="never"/>
+    <item android:title="LIBRARY"
+        android:icon="@drawable/baseline_bookmark_24"
+        app:showAsAction="never"/>
+    <item android:title="BOOK"
+        android:icon="@drawable/farmacobook"
+        app:showAsAction="never"
+        />
+    <item android:title="STORE"
+        android:icon="@drawable/baseline_add_shopping_cart_24"
+        app:showAsAction="never"/>
+    <item android:title="MORE"
+        android:icon="@drawable/baseline_format_list_bulleted_24"
+        app:showAsAction="never"
+        />
+</menu>

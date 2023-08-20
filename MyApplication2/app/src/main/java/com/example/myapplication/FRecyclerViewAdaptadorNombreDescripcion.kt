@@ -47,7 +47,7 @@ class FRecyclerViewAdaptadorNombreDescripcion (
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val entrenadorActual = this.lista[position]
+      val entrenadorActual = this.lista[position]
         holder.nombreTextView.text = entrenadorActual.nombre
         holder.descripcionTextView.text = entrenadorActual.descripcion
         holder.likesTextView.text = "0"
