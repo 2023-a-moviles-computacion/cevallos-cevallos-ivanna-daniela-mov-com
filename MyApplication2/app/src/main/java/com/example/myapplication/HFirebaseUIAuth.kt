@@ -49,7 +49,8 @@ class HFirebaseUIAuth : AppCompatActivity() {
             val providers = arrayListOf(
                 // Arreglo de PROVIDERS para logearse
                 // EJ: Correo, Facebook, Twitter, Google,
-                AuthUI.IdpConfig.EmailBuilder().build()
+                AuthUI.IdpConfig.EmailBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build()
             )
             // Construimos el intent de login
             val logearseIntent = AuthUI.getInstance()
