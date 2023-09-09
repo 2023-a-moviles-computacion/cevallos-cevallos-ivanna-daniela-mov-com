@@ -8,12 +8,14 @@
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
-    android:layout_margin="2dp">
+    android:layout_margin="2dp"
+    android:background="#86BBEC">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#86BBEC">
         <TextView
             android:id="@+id/txt_category_myapppointment"
             android:layout_width="match_parent"

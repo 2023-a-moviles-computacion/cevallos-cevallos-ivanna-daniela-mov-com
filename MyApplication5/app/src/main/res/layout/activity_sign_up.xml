@@ -15,56 +15,76 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/medeasy" />
 
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="617dp"
-        android:background="#C4C4C4"
+        android:layout_width="411dp"
+        android:layout_height="640dp"
+        android:background="@drawable/cardview_top_rounded"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.982"
-        tools:layout_editor_absoluteX="-1dp">
+        tools:layout_editor_absoluteX="2dp">
 
         <TextView
             android:id="@+id/txt_Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/input_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext_bg"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:gravity="center"
+            android:hint="Nombre"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/input_email_signu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext_bg"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Email"
             android:inputType="textEmailAddress" />
 
         <!-- Phone EditText -->
         <EditText
             android:id="@+id/input_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext_bg"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Telefono"
             android:inputType="phone" />
 
         <!-- Age TextView -->
         <TextView
             android:id="@+id/txt_age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Age" />
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:gravity="center"
+            android:hint="Edad" />
 
         <!-- Horizontal LinearLayout for Date Inputs -->
         <LinearLayout
@@ -72,51 +92,73 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
             <!-- Day EditText -->
             <EditText
                 android:id="@+id/input_day"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_edittext_bg"
                 android:ems="10"
-                android:inputType="date" />
+                android:gravity="center"
+                android:hint="Dia"
+                android:inputType="date"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="60dp"/>
 
             <!-- Month EditText -->
             <EditText
                 android:id="@+id/input_month"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_edittext_bg"
                 android:ems="10"
-                android:inputType="date" />
+                android:gravity="center"
+                android:hint="Mes"
+                android:inputType="date"
+                android:layout_marginRight="10dp"/>
 
             <!-- Year EditText -->
             <EditText
                 android:id="@+id/input_year"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_edittext_bg"
                 android:ems="10"
-                android:inputType="date" />
+                android:gravity="center"
+                android:hint="Año"
+                android:inputType="date" android:layout_marginRight="60dp"/>
         </LinearLayout>
 
         <EditText
             android:id="@+id/input_pass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_edittext_bg"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Contraseña"
             android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/txt_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gender" />
+            android:text="Gender"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_marginLeft="35dp"/>
 
         <RadioGroup
             android:id="@+id/radioGroupGender"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/txt_gender">
 
@@ -124,25 +166,29 @@
                 android:id="@+id/rb_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male" />
+                android:text="Male"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female" />
+                android:text="Female"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rb_others"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Others" />
+                android:text="Others"
+                android:textSize="20sp" />
         </RadioGroup>
 
         <Button
             android:id="@+id/btn_sinUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_button_bg"
             android:text="Sign Up"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupGender" />
 

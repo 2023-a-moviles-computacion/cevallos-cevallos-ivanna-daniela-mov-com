@@ -18,6 +18,7 @@
             android:text="My appointments" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:background="#86BBEC"
             android:id="@+id/rv_usersAppointments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
