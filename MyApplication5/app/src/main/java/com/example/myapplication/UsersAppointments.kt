@@ -3,6 +3,7 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@ class UsersAppointments : AppCompatActivity() {
         if (currentUserUid != null) {
             fetchAppointmentsForCurrentUser(currentUserUid)
         }
+
     }
     private fun fetchAppointmentsForCurrentUser(userId: String) {
         // Query appointments where 'idPaciente' is equal to the current user's ID

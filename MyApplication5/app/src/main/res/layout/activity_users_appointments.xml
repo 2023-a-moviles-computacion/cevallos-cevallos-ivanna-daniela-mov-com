@@ -9,20 +9,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/txt_MyAppointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My appointments" />
+            android:layout_marginTop="30dp"
+            android:text="CITAS"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:background="#86BBEC"
+
             android:id="@+id/rv_usersAppointments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/recycler_view_users_appointments"/>
+            tools:listitem="@layout/recycler_view_users_appointments" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

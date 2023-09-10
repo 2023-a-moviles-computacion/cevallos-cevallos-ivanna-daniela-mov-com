@@ -15,7 +15,10 @@
             android:id="@+id/txt_Category_Appoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="35sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="7dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_days"
@@ -26,14 +29,21 @@
             tools:listitem="@layout/recycler_view_days">
 
         </androidx.recyclerview.widget.RecyclerView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/recycler_top_rounded">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_appointments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/recyler_view_appointments" />
+            tools:listitem="@layout/recyler_view_appointments"
+            android:layout_marginTop="25dp"
+          />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

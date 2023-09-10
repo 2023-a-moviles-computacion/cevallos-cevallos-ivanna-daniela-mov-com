@@ -19,14 +19,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Days"
-            android:textColor="#FFFFFF"
+            android:textColor="#1648CE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:padding="8dp"
             android:layout_marginLeft="9dp"
-            android:layout_marginRight="9dp"/>
+            android:layout_marginRight="9dp"
+            android:background="#EFF1FC"/>
 
     </androidx.cardview.widget.CardView>
 </androidx.cardview.widget.CardView>

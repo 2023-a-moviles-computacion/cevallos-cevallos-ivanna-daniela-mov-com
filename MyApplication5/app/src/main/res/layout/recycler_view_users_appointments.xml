@@ -1,41 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="2dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="false"
     android:layout_margin="2dp"
-    android:background="#86BBEC">
+    android:background="#3E80BD"
+    app:cardBackgroundColor="#3E80BD"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#86BBEC">
+        android:background="#86BBEC"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/txt_category_myapppointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category" />
-        <TextView
-            android:id="@+id/txt_doctor_myappointment"
+            android:layout_marginBottom="7dp"
+            android:text="Consulta con"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Doctor" />
-        <TextView
-            android:id="@+id/txt_date_myappointment"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/person" />
+
+            <TextView
+                android:id="@+id/txt_doctor_myappointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="7dp"
+                android:text="Doctor"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date" />
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/hospital" />
+
+
+            <TextView
+                android:id="@+id/txt_category_myapppointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="7dp"
+                android:text="Category"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/calendar" />
+
+
+            <TextView
+                android:id="@+id/txt_date_myappointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="7dp"
+                android:text="Date"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/txt_hour_myappointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hour" />
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="7dp"
+            android:text="hour"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_cancelar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_cancelar"
+            android:text="CANCELAR"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="240dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

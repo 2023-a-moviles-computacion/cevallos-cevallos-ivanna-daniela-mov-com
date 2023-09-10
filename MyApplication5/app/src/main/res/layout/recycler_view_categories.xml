@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#F8F4F4"
-            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_button_signup"
+
             android:text="Button"
-            android:textColor="#131313"
+            android:textColor="@color/white"
             android:textColorHighlight="@color/white"
             android:textColorLink="@color/white" />
 

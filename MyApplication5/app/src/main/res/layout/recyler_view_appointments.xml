@@ -14,7 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#86BBEC">
 
         <!-- First Half -->
         <LinearLayout
@@ -29,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="nAME OF THE DOCTOR"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" /> <!-- Adjust text size as needed -->
 
             <!-- Second Plain Text -->
@@ -37,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="sPECIALITY OF THE DOCTOR"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -52,12 +55,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HOUR"
+                android:textColor="#FFFFFF"
                 android:textSize="40sp" />
+
             <TextView
                 android:id="@+id/txt_minute_appointment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MINUTE"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

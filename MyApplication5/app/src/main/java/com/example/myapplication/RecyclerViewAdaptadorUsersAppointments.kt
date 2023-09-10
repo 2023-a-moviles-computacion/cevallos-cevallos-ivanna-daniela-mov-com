@@ -61,6 +61,16 @@ class RecyclerViewAdaptadorUsersAppointments(
                 holder.txtCategory.text = categoryName
             }
         })
+
+        holder.btn_cancelar.setOnClickListener {
+            if (position != RecyclerView.NO_POSITION) {
+                // Elimina el elemento de la lista de datos
+                dataList.removeAt(position)
+                notifyItemRemoved(position)
+            }
+        }
+
+
     }
     interface SpecialityIDCallback {
         fun onSpecialityIDFetched(specialityID: Int)
@@ -105,6 +115,17 @@ class RecyclerViewAdaptadorUsersAppointments(
                 // Handle the failure here
 
             }
+    }
+
+    fun eliminarRegistro(id:Int){
+        var cadena="${id}"
+        val db = Firebase.firestore
+        val refCocinero= db.collection("appointment")
+        refCocinero
+            .document(cadena)
+            .delete()
+            .addOnCompleteListener{  }
+            .addOnFailureListener {  }
     }
 
     interface DoctorInfoCallback {
