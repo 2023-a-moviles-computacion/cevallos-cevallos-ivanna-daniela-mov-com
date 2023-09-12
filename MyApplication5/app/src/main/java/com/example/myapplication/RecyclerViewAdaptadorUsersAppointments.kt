@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
@@ -10,7 +11,8 @@ import com.google.firebase.ktx.Firebase
 
 class RecyclerViewAdaptadorUsersAppointments(
     private val contexto : UsersAppointments,
-    private val AppointmentList: ArrayList<Appointment>
+    private val AppointmentList: ArrayList<Appointment>,
+
 ):RecyclerView.Adapter<RecyclerViewAdaptadorUsersAppointments.MyViewHolder>() {
 
     inner class MyViewHolder(view:View): RecyclerView.ViewHolder(view){
@@ -18,12 +20,14 @@ class RecyclerViewAdaptadorUsersAppointments(
         val txtCategory: TextView
         val txtDate: TextView
         val txtHour : TextView
+        val cancelarButton: Button
 
         init{
             txtDoctorName=view.findViewById(R.id.txt_doctor_myappointment)
             txtCategory = view.findViewById(R.id.txt_category_myapppointment)
             txtDate = view.findViewById(R.id.txt_date_myappointment)
             txtHour = view.findViewById(R.id.txt_hour_myappointment)
+            cancelarButton= view.findViewById(R.id.btn_cancelar)
         }
     }
 
@@ -36,6 +40,9 @@ class RecyclerViewAdaptadorUsersAppointments(
 
     override fun getItemCount(): Int {
         return AppointmentList.size
+    }
+    interface OnItemClickListener {
+        fun onItemClick(day:String)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -61,6 +68,11 @@ class RecyclerViewAdaptadorUsersAppointments(
                 holder.txtCategory.text = categoryName
             }
         })
+
+        holder.cancelarButton.setOnClickListener {
+            AppointmentList.removeAt(position)
+            notifyDataSetChanged()
+        }
 
 
 
@@ -125,5 +137,6 @@ class RecyclerViewAdaptadorUsersAppointments(
     interface DoctorInfoCallback {
         fun onDoctorInfoFetched(doctorName: String, specialityID: Int)
     }
+
 
 }

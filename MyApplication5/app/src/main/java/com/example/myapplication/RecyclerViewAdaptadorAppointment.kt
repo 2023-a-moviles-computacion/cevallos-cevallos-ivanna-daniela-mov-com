@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -27,11 +28,13 @@ class RecyclerViewAdaptadorAppointment(
         val txtcategory : TextView
         val txtHour : TextView
         val txtMin : TextView
+
         init {
             txtDoctor = view.findViewById(R.id.txt_name_doctor)
             txtcategory = view.findViewById(R.id.txt_category_doctor)
             txtHour = view.findViewById(R.id.txt_hour_appointment)
             txtMin = view.findViewById(R.id.txt_minute_appointment)
+
         }
 
     }
@@ -83,6 +86,7 @@ class RecyclerViewAdaptadorAppointment(
                 // Handle the failure to retrieve the doctor's data
                 holder.txtDoctor.text = "Error: ${e.message}"
             }
+
 
     }
 

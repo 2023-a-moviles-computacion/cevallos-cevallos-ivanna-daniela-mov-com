@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
 
-class UsersAppointments : AppCompatActivity(), RecyclerViewAdaptadorUsersAppointments.OnItemClickListener {
+class UsersAppointments : AppCompatActivity() {
     private lateinit var recyclerViewUsersAppointment: RecyclerView
     private lateinit var appointmentAdapter: RecyclerViewAdaptadorUsersAppointments
     private val appointmentList = ArrayList<Appointment>()
@@ -37,9 +37,7 @@ class UsersAppointments : AppCompatActivity(), RecyclerViewAdaptadorUsersAppoint
 
     }
 
-    override fun onItemClick(){
 
-    }
     private fun fetchAppointmentsForCurrentUser(userId: String) {
         // Query appointments where 'idPaciente' is equal to the current user's ID
         db.collection("appointments")
@@ -85,5 +83,6 @@ class UsersAppointments : AppCompatActivity(), RecyclerViewAdaptadorUsersAppoint
         val intent = Intent(this, clase)
         startActivity(intent)
     }
+
 
 }
