@@ -62,13 +62,7 @@ class RecyclerViewAdaptadorUsersAppointments(
             }
         })
 
-        holder.btn_cancelar.setOnClickListener {
-            if (position != RecyclerView.NO_POSITION) {
-                // Elimina el elemento de la lista de datos
-                dataList.removeAt(position)
-                notifyItemRemoved(position)
-            }
-        }
+
 
 
     }

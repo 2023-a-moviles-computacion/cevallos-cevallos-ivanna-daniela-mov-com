@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +42,10 @@ class SelectAppointment : AppCompatActivity(), RecyclerViewAdaptadorDays.OnItemC
         dayAdapter = RecyclerViewAdaptadorDays(this, dateList, this)
         recyclerViewDay.adapter = dayAdapter
 
+        val botonRegresar = findViewById<ImageButton>(R.id.imb_regresarap)
+        botonRegresar.setOnClickListener {
+            irActividad(SelectCategory::class.java)
+        }
 
 
 

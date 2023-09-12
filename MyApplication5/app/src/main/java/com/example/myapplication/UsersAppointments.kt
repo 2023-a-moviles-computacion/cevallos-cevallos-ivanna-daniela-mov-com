@@ -1,9 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.database.DatabaseErrorHandler
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +15,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
-class UsersAppointments : AppCompatActivity() {
+
+class UsersAppointments : AppCompatActivity(), RecyclerViewAdaptadorUsersAppointments.OnItemClickListener {
     private lateinit var recyclerViewUsersAppointment: RecyclerView
     private lateinit var appointmentAdapter: RecyclerViewAdaptadorUsersAppointments
     private val appointmentList = ArrayList<Appointment>()
@@ -25,6 +30,14 @@ class UsersAppointments : AppCompatActivity() {
         if (currentUserUid != null) {
             fetchAppointmentsForCurrentUser(currentUserUid)
         }
+        val botonRegresar = findViewById<ImageButton>(R.id.imb_regresarus)
+        botonRegresar.setOnClickListener {
+            irActividad(SelectCategory::class.java)
+        }
+
+    }
+
+    override fun onItemClick(){
 
     }
     private fun fetchAppointmentsForCurrentUser(userId: String) {
@@ -65,6 +78,12 @@ class UsersAppointments : AppCompatActivity() {
         recyclerViewUsersAppointment.layoutManager = layoutManagerDay
         appointmentAdapter= RecyclerViewAdaptadorUsersAppointments(this, appointmentList)
         recyclerViewUsersAppointment .adapter = appointmentAdapter
+    }
+    fun irActividad(
+        clase: Class<*>
+    ){
+        val intent = Intent(this, clase)
+        startActivity(intent)
     }
 
 }

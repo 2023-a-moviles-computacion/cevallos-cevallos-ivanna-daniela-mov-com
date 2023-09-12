@@ -18,6 +18,7 @@
     import androidx.drawerlayout.widget.DrawerLayout
     import androidx.recyclerview.widget.LinearLayoutManager
     import androidx.recyclerview.widget.RecyclerView
+    import com.firebase.ui.auth.data.model.User
     import com.google.android.material.navigation.NavigationView
     import com.google.firebase.auth.FirebaseAuth
     import com.google.firebase.firestore.FirebaseFirestore
@@ -30,10 +31,13 @@
         private lateinit var drawerLayout: DrawerLayout
         private lateinit var drawerToggle: ActionBarDrawerToggle
         private lateinit var navigationView : NavigationView
+        private lateinit var auth: FirebaseAuth
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_select_category)
+
+            auth = FirebaseAuth.getInstance()
 
             drawerLayout = findViewById(R.id.slidemenu)
             navigationView = findViewById(R.id.nav_view)
@@ -48,11 +52,11 @@
                        true
                     }
                     R.id.MyAppointments -> {
-                        showToast("My appointments")
+                        irActividad2(UsersAppointments::class.java)
                        true
                     }
                     R.id.Logout -> {
-                        showToast("Log out")
+                        logOut()
                        true
                     }
                     else -> false
@@ -68,6 +72,19 @@
             fetchCategories()
 
         }
+
+        fun irActividad2(
+            clase: Class<*>
+        ){
+            val intent = Intent(this, clase)
+            startActivity(intent)
+        }
+
+        private fun logOut() {
+            auth.signOut()
+            showToast("Logged out successfully!")
+        }
+
         override fun onItemClick(category: Category) {
             val categoryName = category.name
             Log.d("CategorySelected", "Category Name: $categoryName")
